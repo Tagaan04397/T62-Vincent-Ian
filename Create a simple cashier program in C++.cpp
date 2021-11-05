@@ -60,5 +60,6 @@ int main()
                 cout <<" Successfull";
             }
         }
+      system("PAUSE");
     return 0;
 }
