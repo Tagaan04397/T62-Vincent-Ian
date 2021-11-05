@@ -57,7 +57,7 @@ int main()
             else if (payment > 50)
             {
                 total = payment - 50;
-                cout <<" Successfull";
+                cout <<"Payment Successfull"<<endl <<"Total P:"<<endl; Successfull";
             }
         }
       system("PAUSE");
