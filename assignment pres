@@ -1,0 +1,90 @@
+#include <GL/glut.h> 
+
+	void display();
+	void shape(int,int);
+ void init()
+{
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	glEnable(GL_DEPTH_TEST);
+	}
+ int main(int argc,char**argv)
+{
+	glutInit(&argc,argv);
+		glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+		glutInitDisplayMode(GLUT_RGB); // display RGB	
+		glutInitWindowPosition(300,200); // position on your screen 	
+		glutInitWindowSize(1000,900);// size of window	
+		glutCreateWindow("Primitive patterns"); //window title
+		glutDisplayFunc(display);
+		glutReshapeFunc(shape);
+
+
+	init();
+ 	glutMainLoop();
+ }
+ void display()
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
+
+	glLoadIdentity();
+	glTranslatef(0.0f,0.0f,-11.0);
+ 	glRotatef(60,0.0f,1.0f,1.0f);
+	
+
+ 	glBegin(GL_QUADS | GL_LINES);	
+	glLineWidth(4);
+	
+//
+ glColor3f(0.0,0.0,0.0);
+	
+
+	glVertex3f(-2.0,2.0,2.0);
+	glVertex3f(-2.0,-2.0,2.0);
+	glVertex3f(2.0,-2.0,2.0);
+	glVertex3f(2.0,2.0,2.0);
+ //
+ glColor3f(0.1,0.0,1.0);
+	glVertex3f(2.0,2.0,-2.0);
+	glVertex3f(2.0,-2.0,-2.0);
+	glVertex3f(-2.0,-2.0,-2.0);
+	glVertex3f(-2.0,2.0,-2.0);
+ //
+ glColor3f(0.0,0.0,1.0); 
+	glVertex3f(2.0,2.0,2.0);
+	glVertex3f(2.0,-2.0,2.0); 
+	glVertex3f(2.0,-2.0,-2.0);
+	glVertex3f(2.0,2.0,-2.0);
+ //
+ glColor3f(1.0,0.0,0.0); 
+	glVertex3f(-2.0,2.0,-2.0);
+	glVertex3f(-2.0,-2.0,-2.0);
+	glVertex3f(-2.0,-2.0,2.0);
+	glVertex3f(-2.0,2.0,2.0); 
+//
+ glColor3f(0.0,1.0,1.0);
+	glVertex3f(-2.0,2.0,-2.0);
+	glVertex3f(-2.0,2.0,2.0);
+	glVertex3f(2.0,2.0,2.0); 
+	glVertex3f(2.0,2.0,-2.0);
+ //
+glColor3f(1.0,1.0,1.0);
+	glVertex3f(-2.0,-2.0,-2.0);
+	glVertex3f(-2.0,-2.0,2.0);
+	glVertex3f(2.0,-2.0,2.0); 
+	glVertex3f(2.0,-2.0,-2.0);	
+
+glEnd();
+ 	glutSwapBuffers();
+}
+ void shape(int w, int h)
+{
+	glViewport(0,0, (GLsizei)w, (GLsizei)h);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(50,1,1.0,50.0);
+	glMatrixMode(GL_MODELVIEW); 
+}
+ void timer(int)
+{
+	glutPostRedisplay();
+ 	 	}
